@@ -56,7 +56,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-[240px] shrink-0 flex-col bg-[#17212B] text-white">
+    <aside className="hidden h-screen w-[240px] shrink-0 flex-col bg-[#17212B] text-white md:flex">
       {/* Company identity */}
       <div className="flex h-20 items-center border-b border-r border-[#D9DEE3] bg-white px-5">
         <Link href="/" onClick={(event) => navigate(event, "/")} className="flex items-center gap-3">

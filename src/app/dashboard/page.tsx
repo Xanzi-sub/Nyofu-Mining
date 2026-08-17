@@ -58,7 +58,7 @@ export default async function DashboardPage() {
 
         <ButtonLink
           href="/dashboard/invest"
-          className="h-9 rounded-[3px] bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735]"
+          className="h-9 w-full rounded-[3px] bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735] md:w-auto"
         >
           New investment
         </ButtonLink>
@@ -126,8 +126,40 @@ export default async function DashboardPage() {
             </a>
           </div>
         ) : (
-          <div className="mt-4 overflow-x-auto border border-[#D9DEE3] bg-white">
-            <table className="w-full min-w-[760px] text-left">
+          <>
+            <div className="mt-4 divide-y divide-[#E4E7E9] border border-[#D9DEE3] bg-white md:hidden">
+              {investments.map((inv) => (
+                <div key={inv.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[13px] font-semibold text-[#26323D]">
+                        {(inv.packages as { name: string } | null)?.name ?? "Investment package"}
+                      </p>
+                      <p className="mt-1 font-mono text-[10px] text-[#A0A7AD]">
+                        {inv.id.slice(0, 8).toUpperCase()}
+                      </p>
+                    </div>
+                    <StatusBadge status={inv.status as InvestmentStatus} />
+                  </div>
+                  <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-[#E4E7E9] pt-3">
+                    <div>
+                      <dt className="text-[10px] font-medium uppercase tracking-[0.06em] text-[#89929B]">Capital</dt>
+                      <dd className="mt-1 text-[12px] font-semibold tabular-nums text-[#26323D]">{formatCurrency(Number(inv.amount))}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-[10px] font-medium uppercase tracking-[0.06em] text-[#89929B]">Monthly return</dt>
+                      <dd className="mt-1 text-[12px] font-semibold tabular-nums text-[#4F5B65]">{formatCurrency(Number(inv.monthly_return))}</dd>
+                    </div>
+                  </dl>
+                  <p className="mt-4 text-[11px] text-[#707B84]">
+                    Started {new Date(inv.created_at).toLocaleDateString("en-ZA")}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 hidden overflow-x-auto border border-[#D9DEE3] bg-white md:block">
+              <table className="w-full min-w-[760px] text-left">
               <thead className="border-b border-[#D9DEE3] bg-[#F7F8F9]">
                 <tr>
                   <th className="px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#69747E]">
@@ -199,8 +231,9 @@ export default async function DashboardPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
+              </table>
+            </div>
+          </>
         )}
       </section>
 

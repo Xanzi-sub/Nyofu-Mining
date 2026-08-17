@@ -32,7 +32,7 @@ export default async function SettingsPage({
         </p>
       </div>
 
-      <section className="mt-7 border border-[#D9DEE3] bg-white p-6">
+      <section className="mt-7 border border-[#D9DEE3] bg-white p-4 sm:p-6">
         <div className="flex items-center gap-3 border-b border-[#E4E7E9] pb-5">
           <UserRound className="h-5 w-5 text-[#B9973E]" />
           <div>
@@ -81,7 +81,7 @@ export default async function SettingsPage({
               className="h-10 w-full border border-[#E4E7E9] bg-[#F7F8F9] px-3 text-[13px] text-[#7A858F]"
             />
           </div>
-          <SubmitButton pendingLabel="Saving" className="h-9 bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735]">
+          <SubmitButton pendingLabel="Saving" className="h-9 w-full bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735] sm:w-auto">
             Save changes
           </SubmitButton>
         </form>

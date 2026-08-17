@@ -42,8 +42,45 @@ export default async function TransactionsPage() {
           </p>
         </div>
       ) : (
-        <div className="mt-7 overflow-x-auto border border-[#D9DEE3] bg-white">
-          <table className="w-full min-w-[820px] text-left">
+        <>
+          <div className="mt-7 divide-y divide-[#E4E7E9] border border-[#D9DEE3] bg-white md:hidden">
+            {payments.map((payment) => {
+              const investment = payment.investments as {
+                packages: { name: string } | null;
+              } | null;
+              const status = String(payment.status).toUpperCase();
+
+              return (
+                <div key={payment.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[13px] font-semibold text-[#26323D]">
+                        {investment?.packages?.name ?? "Investment"}
+                      </p>
+                      <p className="mt-1 font-mono text-[10px] text-[#89929B]">
+                        {payment.payfast_payment_id ?? payment.id.slice(0, 8).toUpperCase()}
+                      </p>
+                    </div>
+                    <span className={status === "COMPLETE" ? "text-[11px] font-semibold text-[#26734D]" : status === "FAILED" ? "text-[11px] font-semibold text-[#A64242]" : "text-[11px] font-semibold text-[#9A7012]"}>
+                      {status}
+                    </span>
+                  </div>
+                  <div className="mt-4 flex items-end justify-between border-t border-[#E4E7E9] pt-3">
+                    <div>
+                      <p className="text-[10px] font-medium uppercase tracking-[0.06em] text-[#89929B]">Amount</p>
+                      <p className="mt-1 text-[13px] font-semibold tabular-nums text-[#26323D]">{formatCurrency(Number(payment.amount))}</p>
+                    </div>
+                    <p className="text-right text-[11px] text-[#707B84]">
+                      {new Date(payment.created_at).toLocaleDateString("en-ZA", { day: "2-digit", month: "short", year: "numeric" })}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-7 hidden overflow-x-auto border border-[#D9DEE3] bg-white md:block">
+            <table className="w-full min-w-[820px] text-left">
             <thead className="border-b border-[#D9DEE3] bg-[#F7F8F9]">
               <tr>
                 <th className="px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#69747E]">
@@ -129,8 +166,9 @@ export default async function TransactionsPage() {
                 );
               })}
             </tbody>
-          </table>
-        </div>
+            </table>
+          </div>
+        </>
       )}
     </div>
   );

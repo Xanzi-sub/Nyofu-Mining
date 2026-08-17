@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { MobileDashboardNav } from "@/components/dashboard/MobileDashboardNav";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 
 export default async function DashboardLayout({
@@ -32,7 +33,7 @@ export default async function DashboardLayout({
       <Sidebar />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-[68px] shrink-0 items-center justify-between border-b border-[#D9DEE3] bg-white px-6 md:px-8">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-[#D9DEE3] bg-white px-4 sm:px-6 md:h-[68px] md:px-8">
           <div>
             <Link
               href="/dashboard"
@@ -59,10 +60,11 @@ export default async function DashboardLayout({
           </div>
         </header>
 
-        <main className="min-w-0 flex-1 px-5 py-7 md:px-8 md:py-8">
+        <main className="min-w-0 flex-1 px-4 py-6 pb-24 sm:px-6 md:px-8 md:py-8">
           {children}
         </main>
       </div>
+      <MobileDashboardNav />
     </div>
   );
 }

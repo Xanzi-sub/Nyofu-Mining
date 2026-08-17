@@ -4,14 +4,14 @@ import { ButtonLink } from "@/components/ui/Button";
 export function Hero() {
   return (
     <section className="border-b border-[#D9DEE3] bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 md:py-28">
+        <div className="grid items-center gap-10 lg:gap-16 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="max-w-3xl">
             <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#B9973E]">
               Mining investment platform
             </p>
 
-            <h1 className="mt-5 max-w-3xl text-[42px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#17212B] sm:text-[52px]">
+            <h1 className="mt-5 max-w-3xl text-[34px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#17212B] sm:text-[42px] md:text-[52px]">
               Access investment opportunities in Africa`s mining sector.
             </h1>
 
@@ -22,7 +22,7 @@ export function Hero() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/signup" size="lg">
+              <ButtonLink href="/signup" size="lg" className="w-full sm:w-auto">
                 Get started
               </ButtonLink>
 
@@ -30,6 +30,7 @@ export function Hero() {
                 href="#packages"
                 variant="outline"
                 size="lg"
+                className="w-full sm:w-auto"
               >
                 View investment tiers
               </ButtonLink>

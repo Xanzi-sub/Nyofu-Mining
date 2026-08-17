@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { ButtonLink } from "@/components/ui/Button";
+import { MobileMarketingMenu } from "@/components/layout/MobileMarketingMenu";
 
 export async function Header() {
   const isSupabaseConfigured = Boolean(
@@ -21,7 +22,7 @@ export async function Header() {
 
   return (
     <header className="border-b border-[#D9DEE3] bg-white">
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6">
+      <div className="relative mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
@@ -71,7 +72,7 @@ export async function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-3 md:flex">
           {user ? (
             <ButtonLink href="/dashboard" size="md">
               Dashboard
@@ -93,6 +94,7 @@ export async function Header() {
             </>
           )}
         </div>
+        <MobileMarketingMenu isAuthenticated={Boolean(user)} />
       </div>
     </header>
   );

@@ -52,7 +52,7 @@ export function TermsModal({
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#17212B]/55 p-4"
+          className="fixed inset-0 z-[100] flex items-end justify-center bg-[#17212B]/55 p-0 sm:items-center sm:p-4"
           role="presentation"
           onMouseDown={() => setIsOpen(false)}
         >
@@ -60,10 +60,10 @@ export function TermsModal({
             role="dialog"
             aria-modal="true"
             aria-labelledby="terms-title"
-            className="flex max-h-[calc(100dvh-2rem)] w-full max-w-2xl flex-col overflow-hidden border border-[#D9DEE3] bg-white"
+            className="flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden border border-[#D9DEE3] bg-white sm:max-h-[calc(100dvh-2rem)]"
             onMouseDown={(event) => event.stopPropagation()}
           >
-            <div className="sticky top-0 flex items-start justify-between border-b border-[#D9DEE3] bg-white px-6 py-5">
+            <div className="sticky top-0 flex items-start justify-between border-b border-[#D9DEE3] bg-white px-4 py-4 sm:px-6 sm:py-5">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#96782D]">
                   Mining Connect Africa
@@ -83,7 +83,7 @@ export function TermsModal({
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto overscroll-contain px-6 py-6">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-5 sm:px-6 sm:py-6">
               <div className="space-y-7 text-[13px] leading-6 text-[#596570]">
               <section>
                 <h3 className="text-[14px] font-semibold text-[#26323D]">1. Investment risk</h3>
@@ -108,18 +108,18 @@ export function TermsModal({
               </div>
             </div>
 
-            <div className="flex shrink-0 justify-end gap-3 border-t border-[#D9DEE3] bg-[#F7F8F9] px-6 py-4">
+            <div className="flex shrink-0 flex-col-reverse gap-3 border-t border-[#D9DEE3] bg-[#F7F8F9] px-4 py-4 sm:flex-row sm:justify-end sm:px-6">
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="h-9 border border-[#CBD2D8] bg-white px-4 text-[12px] font-medium text-[#4D5964] hover:bg-[#F4F5F6]"
+                className="h-9 w-full border border-[#CBD2D8] bg-white px-4 text-[12px] font-medium text-[#4D5964] hover:bg-[#F4F5F6] sm:w-auto"
               >
                 Close
               </button>
               <button
                 type="button"
                 onClick={acceptTerms}
-                className="h-9 bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735]"
+                className="h-9 w-full bg-[#B9973E] px-4 text-[12px] font-semibold text-white hover:bg-[#A98735] sm:w-auto"
               >
                 Accept terms
               </button>

@@ -66,7 +66,7 @@ export default async function WithdrawalsPage({
 
       <div className="mt-7 grid gap-6 lg:grid-cols-[390px_1fr]">
         <section className="border border-[#D8DDE2] bg-white">
-          <div className="border-b border-[#D8DDE2] bg-[#F7F8F9] px-6 py-5">
+          <div className="border-b border-[#D8DDE2] bg-[#F7F8F9] px-4 py-5 sm:px-6">
             <div className="flex items-center gap-3">
               <Landmark className="h-4 w-4 text-[#9A7A2E]" />
 
@@ -81,7 +81,7 @@ export default async function WithdrawalsPage({
             </div>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {message && (
               <div className="mb-5 flex items-start gap-2 border border-[#CFE3D7] bg-[#F5FAF7] px-3 py-2.5 text-[12px] text-[#277047]">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
@@ -167,7 +167,7 @@ export default async function WithdrawalsPage({
         </section>
 
         <section className="border border-[#D8DDE2] bg-white">
-          <div className="border-b border-[#D8DDE2] bg-[#F7F8F9] px-6 py-5">
+          <div className="border-b border-[#D8DDE2] bg-[#F7F8F9] px-4 py-5 sm:px-6">
             <h2 className="text-[14px] font-semibold text-[#26323D]">
               Request history
             </h2>
@@ -184,14 +184,36 @@ export default async function WithdrawalsPage({
               </p>
             </div>
           ) : (
-            <div>
-              <div className="grid grid-cols-[1fr_140px_110px] border-b border-[#E3E6E9] bg-[#FAFAFA] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#89929B]">
+            <>
+              <div className="divide-y divide-[#E5E8EB] md:hidden">
+                {withdrawals.map((withdrawal) => (
+                  <div key={withdrawal.id} className="p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[12px] font-medium text-[#26323D]">
+                          {(withdrawal.investments as { packages: { name: string } | null } | null)?.packages?.name ?? "Investment earnings"}
+                        </p>
+                        <p className="mt-1 text-[11px] text-[#929AA2]">
+                          {new Date(withdrawal.created_at).toLocaleDateString("en-ZA")}
+                        </p>
+                      </div>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.06em] text-[#8C702B]">{withdrawal.status}</span>
+                    </div>
+                    <p className="mt-4 border-t border-[#E5E8EB] pt-3 text-[13px] font-semibold tabular-nums text-[#26323D]">
+                      {formatCurrency(Number(withdrawal.amount))}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="hidden md:block">
+                <div className="grid grid-cols-[1fr_140px_110px] border-b border-[#E3E6E9] bg-[#FAFAFA] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#89929B]">
                 <span>Investment</span>
                 <span>Amount</span>
                 <span className="text-right">Status</span>
               </div>
 
-              {withdrawals.map((withdrawal) => (
+                {withdrawals.map((withdrawal) => (
                 <div
                   key={withdrawal.id}
                   className="grid grid-cols-[1fr_140px_110px] items-center border-b border-[#E5E8EB] px-6 py-4 last:border-b-0"
@@ -222,8 +244,9 @@ export default async function WithdrawalsPage({
                     </span>
                   </div>
                 </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </>
           )}
         </section>
       </div>
