@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f5f6;
+  --foreground: #17212b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Corporate MCA palette */
+  --color-charcoal: #17212b;
+  --color-charcoal-dark: #17212b;
+
+  --color-gold: #b9973e;
+  --color-gold-dark: #a98735;
+  --color-amber: #9a7012;
+
+  --color-light: #ffffff;
+  --color-light-gray: #f4f5f6;
+
+  --color-muted: #68737d;
+  --color-border-gray: #d9dee3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f4f5f6;
+}
+
+body {
+  margin: 0;
+  background: #f4f5f6;
+  color: #17212b;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* -------------------------------------------------------
+   Base interaction
+------------------------------------------------------- */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a,
+label[for],
+input[type="checkbox"],
+input[type="radio"],
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+input,
+select,
+textarea {
+  color-scheme: light;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa3ab;
+}
+
+select {
+  appearance: auto;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(185, 151, 62, 0.65);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(185, 151, 62, 0.2);
+  color: #17212b;
+}
+
+/* -------------------------------------------------------
+   Mining Connect Africa
+   Corporate / institutional interface
+
+   Design principles:
+   - No gradients
+   - No glows
+   - No glassmorphism
+   - No decorative shadows
+   - No floating / animated cards
+   - Flat, structured surfaces
+   - Restrained gold accents
+------------------------------------------------------- */
+
+/*
+  Legacy utility names retained so existing components
+  do not break. They intentionally use flat colours.
+*/
+
+.gold-gradient {
+  background: #b9973e;
+}
+
+.gold-text-gradient {
+  color: #96782d;
+}
+
+/*
+  Legacy card utility.
+  Kept intentionally subtle and flat.
+*/
+
+.card-glow {
+  box-shadow: none;
+}
+
+/* -------------------------------------------------------
+   Corporate utility classes
+------------------------------------------------------- */
+
+.corporate-card {
+  background: #ffffff;
+  border: 1px solid #d9dee3;
+}
+
+.corporate-card-muted {
+  background: #f8f9fa;
+  border: 1px solid #d9dee3;
+}
+
+.corporate-section {
+  border-bottom: 1px solid #d9dee3;
+}
+
+.corporate-divider {
+  border-color: #d9dee3;
+}
+
+.corporate-label {
+  color: #68737d;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.corporate-value {
+  color: #17212b;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------
+   Tables
+------------------------------------------------------- */
+
+table {
+  width: 100%;
+}
+
+thead {
+  background: #f8f9fa;
+}
+
+thead th {
+  color: #68737d;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e4e7e9;
+}
+
+tbody tr:last-child {
+  border-bottom: 0;
+}
+
+/* -------------------------------------------------------
+   Scrollbar
+------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f5f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd1d6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aeb6bd;
+}
+
+/* -------------------------------------------------------
+   Reduced motion
+   Keeps the interface professional and accessible.
+------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
