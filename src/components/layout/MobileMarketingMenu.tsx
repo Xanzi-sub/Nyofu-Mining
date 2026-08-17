@@ -24,7 +24,7 @@ export function MobileMarketingMenu({ isAuthenticated }: { isAuthenticated: bool
       </button>
 
       {isOpen && (
-        <div className="absolute inset-x-0 top-[72px] z-50 border-b border-[#D9DEE3] bg-white px-6 py-5 shadow-sm">
+        <div className="absolute inset-x-0 top-[120px] z-50 border-b border-[#D9DEE3] bg-white px-6 py-5 shadow-sm">
           <nav className="grid gap-1" aria-label="Mobile navigation">
             <Link href="/#packages" onClick={closeMenu} className="px-3 py-3 text-[13px] font-medium text-[#4D5964] hover:bg-[#F4F5F6]">
               Investment Tiers

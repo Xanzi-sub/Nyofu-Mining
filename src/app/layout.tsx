@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Mining Connect Africa | Invest in Real Assets",
   description:
     "Profitable opportunities in the chrome mining industry with attractive, transparent monthly returns.",
+  icons: {
+    icon: "/logo-icon.jpg",
+    apple: "/logo-icon.jpg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

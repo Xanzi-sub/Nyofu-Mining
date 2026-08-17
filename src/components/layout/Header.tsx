@@ -22,14 +22,14 @@ export async function Header() {
 
   return (
     <header className="border-b border-[#D9DEE3] bg-white">
-      <div className="relative mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="relative mx-auto flex h-[120px] max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
             alt="Mining Connect Africa"
-            width={36}
-            height={36}
-            className="rounded-sm"
+            width={108}
+            height={108}
+            className="h-[108px] w-[108px] rounded-sm object-contain"
           />
 
           <div className="hidden sm:block">
