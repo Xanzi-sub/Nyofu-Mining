@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
 import {
-  LayoutDashboard,
+  BriefcaseBusiness,
   Wallet,
   Receipt,
   Landmark,
@@ -21,7 +21,7 @@ const links = [
   {
     href: "/dashboard",
     label: "Dashboard",
-    icon: LayoutDashboard,
+    icon: BriefcaseBusiness,
   },
   {
     href: "/dashboard/invest",
